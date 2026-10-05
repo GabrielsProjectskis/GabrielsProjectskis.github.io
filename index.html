@@ -1,0 +1,381 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gabriel Jukema · Data Science &amp; AI</title>
+<meta name="description" content="Gabriel Jukema, Applied Data Science and AI student at Breda University of Applied Sciences. Projects, experience and contact details.">
+<meta property="og:title" content="Gabriel Jukema · Data Science & AI">
+<meta property="og:description" content="Applied Data Science and AI student looking for internships in data science, AI, analytics translation and consultancy.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#0b0c0e">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0b0c0e;
+    --surface: #121316;
+    --line: #23252a;
+    --text: #e9e9ec;
+    --muted: #8b8f98;
+    --accent: #9be7c4;
+    --sans: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+    --mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    font-size: 16px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: inherit; text-decoration: none; }
+  ::selection { background: var(--accent); color: #0b0c0e; }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+
+  .wrap { max-width: 920px; margin: 0 auto; padding: 0 24px; }
+
+  /* Nav */
+  nav {
+    position: sticky; top: 0; z-index: 10;
+    background: rgba(11,12,14,.82);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line);
+  }
+  nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 56px; }
+  .mark { font-family: var(--mono); font-size: 14px; color: var(--accent); }
+  nav ul { display: flex; gap: 24px; list-style: none; }
+  nav ul a { font-size: 14px; color: var(--muted); transition: color .15s; }
+  nav ul a:hover { color: var(--text); }
+
+  /* Hero */
+  .hero { padding: 104px 0 88px; }
+  .eyebrow { font-family: var(--mono); font-size: 13px; color: var(--accent); letter-spacing: .02em; }
+  h1 {
+    font-size: clamp(40px, 7vw, 68px);
+    line-height: 1.05; letter-spacing: -.03em; font-weight: 600;
+    margin: 18px 0 24px;
+  }
+  .lead { font-size: clamp(17px, 2.2vw, 20px); color: #c4c6cc; max-width: 640px; }
+  .facts {
+    display: flex; flex-wrap: wrap; gap: 8px 28px; margin-top: 28px;
+    font-family: var(--mono); font-size: 13px; color: var(--muted);
+  }
+  .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 36px; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 11px 20px; border-radius: 8px; font-size: 14px; font-weight: 500;
+    border: 1px solid var(--line); transition: border-color .15s, background .15s, transform .15s;
+  }
+  .btn:hover { border-color: #3a3d44; background: var(--surface); }
+  .btn.primary { background: var(--accent); color: #0b0c0e; border-color: var(--accent); }
+  .btn.primary:hover { background: #b3f0d4; border-color: #b3f0d4; }
+
+  /* Sections */
+  section { padding: 72px 0; border-top: 1px solid var(--line); }
+  .label {
+    font-family: var(--mono); font-size: 13px; color: var(--muted);
+    text-transform: uppercase; letter-spacing: .12em; margin-bottom: 36px;
+  }
+  .label span { color: var(--accent); margin-right: 10px; }
+
+  /* Projects */
+  .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+  .card {
+    background: var(--surface); border: 1px solid var(--line); border-radius: 12px;
+    padding: 28px; display: flex; flex-direction: column;
+    transition: border-color .2s, transform .2s;
+  }
+  .card:hover { border-color: #3a3d44; transform: translateY(-2px); }
+  .kind { font-family: var(--mono); font-size: 12px; color: var(--muted); display: flex; justify-content: space-between; gap: 12px; }
+  .status { color: var(--accent); }
+  .card h3 { font-size: 20px; font-weight: 600; letter-spacing: -.01em; margin: 14px 0 10px; }
+  .card p { color: #b4b7be; font-size: 15px; flex: 1; }
+  .tags { display: flex; flex-wrap: wrap; gap: 6px; margin: 20px 0 0; list-style: none; }
+  .tags li {
+    font-family: var(--mono); font-size: 12px; color: var(--muted);
+    border: 1px solid var(--line); border-radius: 999px; padding: 3px 10px;
+  }
+  .links { display: flex; gap: 18px; margin-top: 22px; padding-top: 18px; border-top: 1px solid var(--line); }
+  .links a { font-size: 14px; font-weight: 500; color: var(--accent); }
+  .links a:hover { text-decoration: underline; text-underline-offset: 4px; }
+  /* Links not filled in yet stay visible but inactive */
+  .links a.is-todo { color: var(--muted); pointer-events: none; font-weight: 400; }
+
+  /* Rows (experience, education) */
+  .rows { list-style: none; }
+  .row {
+    display: grid; grid-template-columns: 200px 1fr; gap: 8px 32px;
+    padding: 20px 0; border-bottom: 1px solid var(--line);
+  }
+  .row:first-child { padding-top: 0; }
+  .row:last-child { border-bottom: 0; padding-bottom: 0; }
+  .when { font-family: var(--mono); font-size: 13px; color: var(--muted); padding-top: 3px; }
+  .row h3 { font-size: 17px; font-weight: 500; }
+  .row p { color: var(--muted); font-size: 15px; margin-top: 2px; }
+  .earlier { margin-top: 28px; color: var(--muted); font-size: 14px; }
+
+  /* Skills */
+  .cols { display: grid; grid-template-columns: repeat(3, 1fr); gap: 36px; }
+  .cols h3 { font-size: 13px; font-family: var(--mono); font-weight: 500; color: var(--accent); margin-bottom: 14px; letter-spacing: .04em; }
+  .cols ul { list-style: none; }
+  .cols li { color: #b4b7be; font-size: 15px; padding: 5px 0; }
+  .cols li a { border-bottom: 1px solid var(--line); transition: border-color .15s, color .15s; }
+  .cols li a:hover { border-color: var(--accent); color: var(--text); }
+
+  /* Contact */
+  .contact h2 { font-size: clamp(28px, 5vw, 44px); letter-spacing: -.02em; font-weight: 600; line-height: 1.15; max-width: 600px; }
+  .contact .mail { display: inline-block; margin-top: 24px; font-size: clamp(18px, 3vw, 24px); color: var(--accent); border-bottom: 1px solid transparent; }
+  .contact .mail:hover { border-color: var(--accent); }
+  .social { display: flex; gap: 24px; margin-top: 28px; font-size: 15px; }
+  .social a { color: var(--muted); transition: color .15s; }
+  .social a:hover { color: var(--text); }
+  .social a.is-todo { opacity: .5; pointer-events: none; }
+
+  footer { padding: 32px 0 48px; border-top: 1px solid var(--line); color: var(--muted); font-size: 13px; font-family: var(--mono); }
+
+  /* Entrance */
+  @media (prefers-reduced-motion: no-preference) {
+    .hero .wrap > * { animation: rise .7s ease both; }
+    .hero .wrap > *:nth-child(2) { animation-delay: .06s; }
+    .hero .wrap > *:nth-child(3) { animation-delay: .12s; }
+    .hero .wrap > *:nth-child(4) { animation-delay: .18s; }
+    .hero .wrap > *:nth-child(5) { animation-delay: .24s; }
+    @keyframes rise { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+  }
+
+  @media (max-width: 760px) {
+    .wrap { padding: 0 20px; }
+    nav ul { gap: 16px; }
+    .hero { padding: 64px 0 56px; }
+    section { padding: 56px 0; }
+    .grid { grid-template-columns: 1fr; }
+    .row { grid-template-columns: 1fr; gap: 4px; }
+    .cols { grid-template-columns: 1fr; gap: 32px; }
+  }
+  @media (max-width: 420px) {
+    nav ul li:nth-child(n+3) { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="mark" href="#top">gj/</a>
+    <ul>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <p class="eyebrow">Applied Data Science &amp; AI · Breda University of Applied Sciences</p>
+    <h1>Gabriel Jukema</h1>
+    <p class="lead">I study Applied Data Science and AI and like building practical tools, from computer vision to email automation. With a background in business analysis and running my own e-commerce store, I'm looking for internships in data science, AI, analytics translation and consultancy.</p>
+    <div class="facts">
+      <span>Rotterdam, NL</span>
+      <span>English · Dutch</span>
+      <span>Open to internships</span>
+    </div>
+    <div class="actions">
+      <a class="btn primary" href="#projects">View projects</a>
+      <!-- TODO: put your CV PDF next to index.html and name it Gabriel_Jukema_CV.pdf -->
+      <a class="btn" href="Gabriel_Jukema_CV.pdf" download>Download CV ↓</a>
+      <a class="btn" href="mailto:gabrieljukema@gmail.com">Email me</a>
+    </div>
+  </div>
+</header>
+
+<section id="projects">
+  <div class="wrap">
+    <p class="label"><span>01</span>Projects</p>
+    <div class="grid">
+
+      <article class="card">
+        <div class="kind"><span>School project · Computer vision</span><span class="status">In progress</span></div>
+        <h3>NGT Sign Language Recognition</h3>
+        <p>Real-time recognition of Dutch Sign Language (NGT) fingerspelling from a webcam, built as a learning tool with practice and learn modes. MediaPipe hand and face landmarks feed a Random Forest classifier tuned with Optuna, and Dynamic Time Warping handles the letters that need motion (H, J, Z).</p>
+        <ul class="tags">
+          <li>Python</li><li>MediaPipe</li><li>scikit-learn</li><li>Optuna</li><li>OpenCV</li><li>Streamlit</li>
+        </ul>
+        <div class="links">
+          <!-- Team repo from the README. Swap for your own fork if you have one. -->
+          <a href="https://github.com/TimurKambarov/NGT-Sign-Language-Recognition" target="_blank" rel="noopener">GitHub ↗</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="kind"><span>Side project · Automation</span></div>
+        <h3>Gmail Auto-Responder with Gemini</h3>
+        <p>A step-by-step walkthrough for building a bot that reads unread Gmail, asks the Gemini API for a context-aware reply and sends it, running on a timer. Covers prompt design, error handling and keeping API keys secure.</p>
+        <ul class="tags">
+          <li>Google Apps Script</li><li>Gemini API</li><li>Gmail</li>
+        </ul>
+        <div class="links">
+          <!-- TODO: link to the slides (Google Drive / Slides share link), then remove class="is-todo" -->
+          <a class="is-todo" href="#" title="Link coming soon">Presentation ↗</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="kind"><span>Side project · Automation</span></div>
+        <h3>Automated Invoice Generator</h3>
+        <p>An app that generates professional invoices automatically for small businesses, so they can skip the manual formatting and get paid faster.</p>
+        <!-- TODO: add a <ul class="tags"> with your tech stack, plus 1–2 lines on what you built -->
+        <div class="links">
+          <!-- TODO: add the live demo and/or GitHub link, then remove class="is-todo" -->
+          <a class="is-todo" href="#" title="Link coming soon">Live demo ↗</a>
+          <a class="is-todo" href="#" title="Link coming soon">GitHub ↗</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="kind"><span>Side project · Automation</span></div>
+        <h3>Business Card Generator</h3>
+        <p>Generates a professional business card automatically from a few pieces of input information such as name, role and contact details.</p>
+        <!-- TODO: add a <ul class="tags"> with your tech stack, plus 1–2 lines on what you built -->
+        <div class="links">
+          <!-- TODO: add the live demo and/or GitHub link, then remove class="is-todo" -->
+          <a class="is-todo" href="#" title="Link coming soon">Live demo ↗</a>
+          <a class="is-todo" href="#" title="Link coming soon">GitHub ↗</a>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="wrap">
+    <p class="label"><span>02</span>Experience</p>
+    <ul class="rows">
+      <li class="row">
+        <div class="when"><!-- TODO: add dates --></div>
+        <div>
+          <h3>Business Analyst &amp; Asset Manager</h3>
+          <p>AEB · Amsterdam</p>
+        </div>
+      </li>
+      <li class="row">
+        <div class="when">1 year</div>
+        <div>
+          <h3>Owner &amp; Manager, e-commerce store</h3>
+          <p>Ran my own online store</p>
+        </div>
+      </li>
+      <li class="row">
+        <div class="when">Certified since Dec 2022</div>
+        <div>
+          <h3>Personal Trainer &amp; Group Lesson Instructor</h3>
+          <p>Go Health Clubs · Nieuwerkerk aan den IJssel</p>
+        </div>
+      </li>
+      <li class="row">
+        <div class="when">Current</div>
+        <div>
+          <h3>Spanner / Fluiter</h3>
+          <p>DFDS · Vlaardingen</p>
+        </div>
+      </li>
+    </ul>
+    <p class="earlier">Earlier: order picker at Solo Stove (Rotterdam) · front desk, smoothie bar and barista at Life &amp; Kicking gym (Amsterdam) · waiter at Houttuyn Wellness River Resort and painter at First Meridian NV (Suriname)</p>
+  </div>
+</section>
+
+<section id="education">
+  <div class="wrap">
+    <p class="label"><span>03</span>Education</p>
+    <ul class="rows">
+      <li class="row">
+        <div class="when">Current</div>
+        <div>
+          <h3>Applied Data Science &amp; Artificial Intelligence</h3>
+          <p>Breda University of Applied Sciences · Propedeuse obtained</p>
+        </div>
+      </li>
+      <li class="row">
+        <div class="when">Completed first year</div>
+        <div>
+          <h3>International Creative Business</h3>
+          <p>Inholland University of Applied Sciences · Propedeuse obtained</p>
+        </div>
+      </li>
+      <li class="row">
+        <div class="when">Graduated</div>
+        <div>
+          <h3>High school diploma</h3>
+          <p>Christian Liberty Academy · Paramaribo, Suriname</p>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <p class="label"><span>04</span>Skills &amp; certificates</p>
+    <div class="cols">
+      <div>
+        <h3>TOOLS</h3>
+        <ul>
+          <li>Python</li>
+          <li>scikit-learn · Optuna</li>
+          <li>MediaPipe · OpenCV</li>
+          <li>Streamlit</li>
+          <li>Google Apps Script · Gemini API</li>
+          <li>Power BI</li>
+        </ul>
+      </div>
+      <div>
+        <h3>WORKING STYLE</h3>
+        <ul>
+          <li>Problem solver</li>
+          <li>Adapts quickly to new systems</li>
+          <li>Works well under pressure</li>
+          <li>Proactive</li>
+          <li>Leadership experience</li>
+        </ul>
+      </div>
+      <div>
+        <h3>CERTIFICATES &amp; COURSES</h3>
+        <ul>
+          <li>ISO 9001:2015 &amp; Internal Auditor</li>
+          <li><a href="https://learn.microsoft.com/api/achievements/share/en-us/GabrielJukema-5830/Z4VXF8X2?sharingId=D49894033D9F86F1" target="_blank" rel="noopener">Foundations of Cloud Computing for Administrators ↗</a></li>
+          <li>Power BI basics</li>
+          <li>NVIDIA Generative AI Explained</li>
+          <li>Fitness Trainer A</li>
+        </ul>
+      </div>
+    </div>
+    <p class="earlier">Community: member of Interact Paramaribo (Rotary youth club) for 5 years, 1 year as Director of International Relations.</p>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <div class="wrap">
+    <p class="label"><span>05</span>Contact</p>
+    <h2>Looking for an internship in data, AI or consultancy? Let's talk.</h2>
+    <a class="mail" href="mailto:gabrieljukema@gmail.com">gabrieljukema@gmail.com</a>
+    <div class="social">
+      <!-- TODO: replace the # with your real URLs, then remove class="is-todo" -->
+      <a class="is-todo" href="#" title="Link coming soon">LinkedIn ↗</a>
+      <a class="is-todo" href="#" title="Link coming soon">GitHub ↗</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">© 2026 Gabriel Jukema</div>
+</footer>
+
+</body>
+</html>
